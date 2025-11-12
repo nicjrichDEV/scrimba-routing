@@ -5,6 +5,7 @@
       "name": "Scrim-s04sl3h",
       "dependencies": {
         "miragejs": "0.1.46",
+        "prop-types": "^15.8.1",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-router-dom": "6.4.3",
@@ -268,6 +269,8 @@
 
     "node-releases": ["node-releases@2.0.27", "", {}, "sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA=="],
 
+    "object-assign": ["object-assign@4.1.1", "", {}, "sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg=="],
+
     "picocolors": ["picocolors@1.1.1", "", {}, "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="],
 
     "picomatch": ["picomatch@4.0.3", "", {}, "sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q=="],
@@ -276,9 +279,13 @@
 
     "pretender": ["pretender@3.4.7", "", { "dependencies": { "fake-xml-http-request": "^2.1.2", "route-recognizer": "^0.3.3" } }, "sha512-jkPAvt1BfRi0RKamweJdEcnjkeu7Es8yix3bJ+KgBC5VpG/Ln4JE3hYN6vJym4qprm8Xo5adhWpm3HCoft1dOw=="],
 
+    "prop-types": ["prop-types@15.8.1", "", { "dependencies": { "loose-envify": "^1.4.0", "object-assign": "^4.1.1", "react-is": "^16.13.1" } }, "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="],
+
     "react": ["react@18.2.0", "", { "dependencies": { "loose-envify": "^1.1.0" } }, "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="],
 
     "react-dom": ["react-dom@18.2.0", "", { "dependencies": { "loose-envify": "^1.1.0", "scheduler": "^0.23.0" }, "peerDependencies": { "react": "^18.2.0" } }, "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="],
+
+    "react-is": ["react-is@16.13.1", "", {}, "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="],
 
     "react-refresh": ["react-refresh@0.18.0", "", {}, "sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw=="],
 

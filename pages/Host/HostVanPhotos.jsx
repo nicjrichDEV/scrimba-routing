@@ -1,6 +1,8 @@
+import React from "react";
 import { useOutletContext } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const HostVanPhotos = () => {
+export default function HostVanPhotos() {
   const { currentVan } = useOutletContext();
 
   if (!currentVan) {
@@ -14,6 +16,11 @@ const HostVanPhotos = () => {
       className="host-van-detail-image"
     />
   );
-};
+}
 
-export default HostVanPhotos;
+HostVanPhotos.propTypes = {
+  currentVan: PropTypes.shape({
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+  }),
+};

@@ -1,60 +1,58 @@
 import React from "react";
 import { useParams, Link, Outlet, NavLink } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
 
 export default function HostVanDetail() {
   const { id } = useParams();
-  const [currentVan, setCurrentVan] = React.useState(null);
+  const { data, loading, error } = useFetch(`/api/host/vans/${id}`);
 
-  React.useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCurrentVan(data.vans[0]));
-  }, [id]);
-
-  if (!currentVan) {
-    return <h1>Loading...</h1>;
+  if (loading) {
+    return <div role="status">Loading...</div>;
   }
 
-  const activeStyles = {
-    fontWeight: "bold",
-    textDecoration: "underline",
-    color: "#161616",
-  };
+  if (error) {
+    return <div role="alert">Error: {error}</div>;
+  }
+
+  const currentVan = data.vans[0];
 
   return (
     <section>
-      <Link to=".." relative="path" className="back-button">
-        &larr; <span>Back to all vans</span>
+      <Link to=".." relative="path" className="back-button" aria-label="Back to all vans">
+        <span>Back to all vans</span>
       </Link>
 
       <div className="host-van-detail-layout-container">
         <div className="host-van-detail">
           <img src={currentVan.imageUrl} alt={currentVan.name} />
           <div className="host-van-detail-info-text">
-            <i className={`van-type van-type-${currentVan.type}`}>
+            <span className={`van-type van-type-${currentVan.type}`}>
               {currentVan.type}
-            </i>
+            </span>
             <h3>{currentVan.name}</h3>
             <h4>${currentVan.price}/day</h4>
           </div>
         </div>
-        <nav className="host-van-detail-nav">
+        <nav
+          className="host-van-detail-nav"
+          aria-label="Van details navigation"
+        >
           <NavLink
             to="."
             end
-            style={({ isActive }) => (isActive ? activeStyles : null)}
+            className={({ isActive }) => (isActive ? "active-link" : "")}
           >
             Details
           </NavLink>
           <NavLink
             to="pricing"
-            style={({ isActive }) => (isActive ? activeStyles : null)}
+            className={({ isActive }) => (isActive ? "active-link" : "")}
           >
             Pricing
           </NavLink>
           <NavLink
             to="photos"
-            style={({ isActive }) => (isActive ? activeStyles : null)}
+            className={({ isActive }) => (isActive ? "active-link" : "")}
           >
             Photos
           </NavLink>

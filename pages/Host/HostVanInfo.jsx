@@ -1,6 +1,8 @@
+import React from "react";
 import { useOutletContext } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const HostVanInfo = () => {
+export default function HostVanInfo() {
   const { currentVan } = useOutletContext();
 
   if (!currentVan) {
@@ -23,6 +25,14 @@ const HostVanInfo = () => {
       </h4>
     </section>
   );
-};
+}
 
-export default HostVanInfo;
+HostVanInfo.propTypes = {
+  currentVan: PropTypes.shape({
+    name: PropTypes.string,
+    type: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    imageUrl: PropTypes.string,
+  }),
+};

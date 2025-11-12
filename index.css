@@ -52,6 +52,12 @@ header a:hover {
     text-decoration: underline;
 }
 
+.active-link {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #161616;
+}
+
 main {
     margin-bottom: 84px;
 }
@@ -216,7 +222,7 @@ footer {
     border: none;
     border-radius: 5px;
     background-color: #FFEAD0;
-    color: #4D4D4D;
+    color: #000000;
     transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -225,7 +231,8 @@ footer {
 }
 
 .van-type:focus {
-    outline: none;
+    outline: 2px solid #000;
+    outline-offset: 2px;
 }
 
 .van-type.selected {
@@ -406,7 +413,7 @@ i[class*='van-type-'] {
 
 .host-van-detail-nav a {
     text-decoration: none;
-    color: #4D4D4D;
+    color: #000000;
     font-weight: 500;
     padding: 5px 20px;
 }
@@ -442,7 +449,7 @@ i[class*='van-type-'] {
 
 .host-van-price>span {
     font-size: 16px;
-    color: #4D4D4D;
+    color: #000000;
 }
 
 .host-van-detail-image {
