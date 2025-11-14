@@ -1,36 +1,52 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import { Link, useParams, useLocation } from "react-router-dom";
 
 export default function VanDetail() {
-  const { id } = useParams();
-  const { data, loading, error } = useFetch(`/api/vans/${id}`);
+  const params = useParams();
+  const location = useLocation();
+  console.log(location?.state.search);
 
-  if (loading) {
-    return <div role="status">Loading...</div>;
-  }
+  const [van, setVan] = React.useState(null);
 
-  if (error) {
-    return <div role="alert">Error: {error}</div>;
-  }
+  React.useEffect(() => {
+    fetch(`/api/vans/${params.id}`)
+      .then((res) => res.json())
+      .then((data) => setVan(data.vans));
+  }, [params.id]);
 
-  const van = data.van;
-
+  /**
+   * Challenge: modify the Link `to` prop below to send the user
+   * back to the previous page with the searchParams included, if
+   * they exist. (Remember we may not have anything in that state
+   * if there were no filters applied before coming to this
+   * van detail page, so make sure to "code defensively" to handle
+   * that case.)
+   *
+   */
   return (
     <div className="van-detail-container">
-      <div className="van-detail">
-        <Link to=".." relative="path" className="back-button" aria-label="Back to all vans">
-          <span>Back to all vans</span>
-        </Link>
-        <img src={van.imageUrl} alt={van.name} />
-        <span className={`van-type ${van.type} selected`}>{van.type}</span>
-        <h2>{van.name}</h2>
-        <p className="van-price">
-          <span>${van.price}</span>/day
-        </p>
-        <p>{van.description}</p>
-        <button className="link-button">Rent this van</button>
-      </div>
+      <Link
+        to={`..${location?.state?.search ? `?${location.state.search}` : ""}`}
+        relative="path"
+        className="back-button"
+      >
+        &larr; <span>Back to all vans</span>
+      </Link>
+
+      {van ? (
+        <div className="van-detail">
+          <img src={van.imageUrl} />
+          <i className={`van-type ${van.type} selected`}>{van.type}</i>
+          <h2>{van.name}</h2>
+          <p className="van-price">
+            <span>${van.price}</span>/day
+          </p>
+          <p>{van.description}</p>
+          <button className="link-button">Rent this van</button>
+        </div>
+      ) : (
+        <h2>Loading...</h2>
+      )}
     </div>
   );
 }
